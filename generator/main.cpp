@@ -1,6 +1,6 @@
 /*
- * This file is part of the pmo (peads Memory Operations) distribution
- * (https://github.com/peads/pmo).
+ * This file is part of the OBCD (Object Branching Control Delegation) distribution
+ * (https://github.com/peads/obcd).
  * Copyright (c) 2026 Patrick Eads.
  *
  * This program is free software: you can redistribute it and/or modify
