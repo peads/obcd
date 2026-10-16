@@ -98,8 +98,8 @@
         "CMAKE_SYSTEM_NAME": "Windows",
         "CMAKE_C_COMPILER": "clang",
         "CMAKE_CXX_COMPILER": "clang",
-        "CMAKE_C_FLAGS": "-O3 -g0 -march=native -flto=auto -fomit-frame-pointer -momit-leaf-frame-pointer -ffunction-sections -fdata-sections -Wall -Wextra -Werror",
-        "CMAKE_CXX_FLAGS": "-O3 -g0 -march=native -flto=auto -fomit-frame-pointer -momit-leaf-frame-pointer -ffunction-sections -fdata-sections -Wall -Wextra -Werror"
+        "CMAKE_C_FLAGS": "-O3 -g0 -flto=auto -fomit-frame-pointer -momit-leaf-frame-pointer -ffunction-sections -fdata-sections -Wall -Wextra -Werror",
+        "CMAKE_CXX_FLAGS": "-O3 -g0 -flto=auto -fomit-frame-pointer -momit-leaf-frame-pointer -ffunction-sections -fdata-sections -Wall -Wextra -Werror"
       }
     },
     {
@@ -111,13 +111,13 @@
         "lhs": "${hostSystemName}",
         "rhs": "Windows"
       },
-      "inherits": "x64-ninja-clang",
+      "inherits": "base",
       "cacheVariables": {
         "CMAKE_SYSTEM_NAME": "Windows",
         "CMAKE_C_COMPILER": "clang",
         "CMAKE_CXX_COMPILER": "clang",
-        "CMAKE_C_FLAGS": "--target=arm64-pc-windows-msvc -O3 -g0 -march=native -flto=auto -fomit-frame-pointer -momit-leaf-frame-pointer -ffunction-sections -fdata-sections -Wall -Wextra -Werror",
-        "CMAKE_CXX_FLAGS": "--target=arm64-pc-windows-msvc -O3 -g0 -march=native -flto=auto -fomit-frame-pointer -momit-leaf-frame-pointer -ffunction-sections -fdata-sections -Wall -Wextra -Werror"
+        "CMAKE_C_FLAGS": "--target=arm64-pc-windows-msvc -O3 -g0 -flto=auto -fomit-frame-pointer -momit-leaf-frame-pointer -ffunction-sections -fdata-sections -Wall -Wextra -Werror",
+        "CMAKE_CXX_FLAGS": "--target=arm64-pc-windows-msvc -O3 -g0 -flto=auto -fomit-frame-pointer -momit-leaf-frame-pointer -ffunction-sections -fdata-sections -Wall -Wextra -Werror"
       }
     },
     {
