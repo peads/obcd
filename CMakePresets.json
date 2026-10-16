@@ -136,7 +136,6 @@
   "testPresets": [
     {
       "name": "tests-release",
-      "hidden": true,
       "configurePreset": "x64-ninja-clang",
       "description": "Run the Catch2 test suite via CTest",
       "output": {
