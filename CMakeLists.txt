@@ -71,6 +71,7 @@ endif()
 
 if (DEFINED GENERATE_TEST AND GENERATE_TEST)
     file(WRITE "${OUT_PATH}/piggy/dlls.txt" "${OUT_PATH}/piggy/piggy.dll\n")
+    enable_testing()
 endif()
 
 set(PMO_SRC_DIR "${CMAKE_CURRENT_BINARY_DIR}/_deps/pmo-src")
