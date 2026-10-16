@@ -119,8 +119,7 @@
         "CMAKE_C_COMPILER": "clang",
         "CMAKE_CXX_COMPILER": "clang",
         "CMAKE_C_FLAGS": "--target=arm64-pc-windows-msvc -O3 -g0 -flto=auto -fomit-frame-pointer -momit-leaf-frame-pointer -ffunction-sections -fdata-sections -Wall -Wextra -Werror",
-        "CMAKE_CXX_FLAGS": "--target=arm64-pc-windows-msvc -O3 -g0 -flto=auto -fomit-frame-pointer -momit-leaf-frame-pointer -ffunction-sections -fdata-sections -Wall -Wextra -Werror",
-        "IS_ARM64": true
+        "CMAKE_CXX_FLAGS": "--target=arm64-pc-windows-msvc -O3 -g0 -flto=auto -fomit-frame-pointer -momit-leaf-frame-pointer -ffunction-sections -fdata-sections -Wall -Wextra -Werror"
       }
     },
     {
@@ -164,7 +163,9 @@
       "configurePreset": "x64-ninja-clang",
       "description": "Run the Catch2 test suite via CTest",
       "output": {
-        "outputOnFailure": true
+        "shortProgress": false,
+        "verbosity": "verbose",
+        "outputOnFailure": false
       },
       "execution": {
         "noTestsAction": "error",
@@ -176,7 +177,9 @@
       "configurePreset": "arm64-ninja-clang",
       "description": "Run the Catch2 test suite via CTest - arm64",
       "output": {
-        "outputOnFailure": true
+        "shortProgress": false,
+        "verbosity": "verbose",
+        "outputOnFailure": false
       },
       "execution": {
         "noTestsAction": "error",
