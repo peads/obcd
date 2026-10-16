@@ -111,6 +111,8 @@
         "lhs": "${hostSystemName}",
         "rhs": "Windows"
       },
+      "binaryDir": "${sourceDir}/cmake-build-${presetName}",
+      "generator": "Ninja",
       "inherits": "base",
       "cacheVariables": {
         "CMAKE_SYSTEM_NAME": "Windows",
@@ -171,8 +173,14 @@
     {
       "name": "tests-release-arm64",
       "configurePreset": "arm64-ninja-clang",
-      "description": "Run the Catch2 test suite via CTest",
-      "inherits":  "tests-release"
+      "description": "Run the Catch2 test suite via CTest - arm64",
+      "output": {
+        "outputOnFailure": true
+      },
+      "execution": {
+        "noTestsAction": "error",
+        "stopOnFailure": false
+      }
     }
   ],
   "workflowPresets": [
