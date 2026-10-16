@@ -77,7 +77,7 @@ FetchContent_Populate(
         PMO
         QUIET
         GIT_REPOSITORY https://github.com/peads/pmo.git
-        GIT_TAG v1.0.5
+        GIT_TAG v1.1.0
         SOURCE_DIR "${PMO_SRC_DIR}"
         BINARY_DIR "${PMO_BIN_DIR}"
         SUBBUILD_DIR "${PMO_SUB_DIR}"

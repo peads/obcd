@@ -14,8 +14,7 @@
         "CMAKE_BUILD_TYPE": "Release",
         "GENERATE_TEST": true,
         "OUT_PATH": "${sourceDir}/cmake-build-${presetName}/bootstrapper",
-        "DLL_NAME": "dwmapi.dll",
-        "PMO_INCLUDE": "${sourceDir}/../../../include"
+        "DLL_NAME": "dwmapi.dll"
       }
     },
     {
@@ -34,8 +33,8 @@
         "CMAKE_SYSTEM_NAME": "Windows",
         "CMAKE_C_COMPILER": "clang-cl",
         "CMAKE_CXX_COMPILER": "clang-cl",
-        "CMAKE_C_FLAGS": "/nologo /EHsc /clang:-m64 /clang:-O3 /clang:-march=native /WX- /Gy /clang:-flto=auto /clang:-fomit-frame-pointer /clang:-g0",
-        "CMAKE_CXX_FLAGS": "/nologo /EHsc /clang:-m64 /clang:-O3 /clang:-march=native /WX- /Gy /clang:-flto=auto /clang:-fomit-frame-pointer /clang:-g0",
+        "CMAKE_C_FLAGS": "/nologo /EHsc /clang:-Wall /clang:-Wextra /clang:-Werror /clang:-m64 /clang:-O3 /clang:-march=native /WX- /Gy /clang:-flto=auto /clang:-fomit-frame-pointer /clang:-g0",
+        "CMAKE_CXX_FLAGS": "/nologo /EHsc /clang:-Wall /clang:-Wextra /clang:-Werror /clang:-m64 /clang:-O3 /clang:-march=native /WX- /Gy /clang:-flto=auto /clang:-fomit-frame-pointer /clang:-g0",
         "CMAKE_SHARED_LINKER_FLAGS": "/subsystem:console /OPT:REF /OPT:ICF=3 /LTCG /DEBUG:NONE /EMITPOGOPHASEINFO /ERRORREPORT:QUEUE",
         "CMAKE_EXE_LINKER_FLAGS": "/subsystem:console /OPT:REF /OPT:ICF=3 /LTCG /DEBUG:NONE /EMITPOGOPHASEINFO /ERRORREPORT:QUEUE"
       }
@@ -54,10 +53,33 @@
       "inherits": "base",
       "cacheVariables": {
         "CMAKE_SYSTEM_NAME": "Windows",
-        "CMAKE_C_FLAGS": "/nologo /EHsc /O2 /Ob3 /Ot /Oy /Oi /GL /Gy /Gm- /MP /GS- /Gw",
-        "CMAKE_CXX_FLAGS": "/nologo /EHsc /O2 /Ob3 /Ot /Oy /Oi /GL /Gy /Gm- /MP /GS- /Gw",
+        "CMAKE_C_FLAGS": "/nologo /EHsc /O2 /Ob2 /Ot /Oy /Oi /GL /Gy /Gm- /MP /GS- /Gw",
+        "CMAKE_CXX_FLAGS": "/nologo /EHsc /O2 /Ob2 /Ot /Oy /Oi /GL /Gy /Gm- /MP /GS- /Gw",
         "CMAKE_SHARED_LINKER_FLAGS": "/subsystem:console /OPT:REF /OPT:ICF=3 /LTCG /DEBUG:NONE /EMITPOGOPHASEINFO /ERRORREPORT:QUEUE",
         "CMAKE_EXE_LINKER_FLAGS": "/subsystem:console /OPT:REF /OPT:ICF=3 /LTCG /DEBUG:NONE /EMITPOGOPHASEINFO /ERRORREPORT:QUEUE"
+      }
+    },
+    {
+      "name": "x64-ninja-msvc-debug",
+      "displayName": "x64-ninja-msvc-debug",
+      "description": "Compile for Windows x64 using Visual Studio 17 2022 and msvc",
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Windows"
+      },
+      "generator": "Ninja",
+      "cacheVariables": {
+        "CMAKE_EXPORT_COMPILE_COMMANDS": true,
+        "CMAKE_BUILD_TYPE": "Debug",
+        "GENERATE_TEST": true,
+        "OUT_PATH": "${sourceDir}/cmake-build-${presetName}/bootstrapper",
+        "DLL_NAME": "dwmapi.dll",
+        "CMAKE_SYSTEM_NAME": "Windows",
+        "CMAKE_C_FLAGS": "/nologo /EHsc /MP /GS- /Zi",
+        "CMAKE_CXX_FLAGS": "/nologo /EHsc /MP /GS- /Zi",
+        "CMAKE_SHARED_LINKER_FLAGS": "/subsystem:console /ERRORREPORT:QUEUE",
+        "CMAKE_EXE_LINKER_FLAGS": "/subsystem:console /ERRORREPORT:QUEUE"
       }
     },
     {
@@ -76,8 +98,8 @@
         "CMAKE_SYSTEM_NAME": "Windows",
         "CMAKE_C_COMPILER": "clang",
         "CMAKE_CXX_COMPILER": "clang",
-        "CMAKE_C_FLAGS": "-O3 -flto=auto -fomit-frame-pointer -ffunction-sections -fdata-sections -Wl,--gc-sections -Wl,--icf=all -Wl,-s",
-        "CMAKE_CXX_FLAGS": "-O3 -flto=auto -fomit-frame-pointer -ffunction-sections -fdata-sections -Wl,--gc-sections -Wl,--icf=all -Wl,-s"
+        "CMAKE_C_FLAGS": "-O3 -g0 -march=native -flto=auto -fomit-frame-pointer -momit-leaf-frame-pointer -ffunction-sections -fdata-sections -Wall -Wextra -Werror",
+        "CMAKE_CXX_FLAGS": "-O3 -g0 -march=native -flto=auto -fomit-frame-pointer -momit-leaf-frame-pointer -ffunction-sections -fdata-sections -Wall -Wextra -Werror"
       }
     },
     {
@@ -96,8 +118,8 @@
         "CMAKE_SYSTEM_NAME": "Windows",
         "CMAKE_C_COMPILER": "clang-cl",
         "CMAKE_CXX_COMPILER": "clang-cl",
-        "CMAKE_C_FLAGS": "/nologo /EHsc /clang:-O3 /WX- /Gy /clang:-flto=auto /clang:-fomit-frame-pointer /clang:-g0",
-        "CMAKE_CXX_FLAGS": "/nologo /EHsc /clang:-O3 /WX- /Gy /clang:-flto=auto /clang:-fomit-frame-pointer /clang:-g0",
+        "CMAKE_C_FLAGS": "/nologo /EHsc /clang:-Wall /clang:-Wextra /clang:-Werror /clang:-O3 /WX- /Gy /clang:-flto=auto /clang:-fomit-frame-pointer /clang:-g0",
+        "CMAKE_CXX_FLAGS": "/nologo /EHsc /clang:-Wall /clang:-Wextra /clang:-Werror /clang:-O3 /WX- /Gy /clang:-flto=auto /clang:-fomit-frame-pointer /clang:-g0",
         "CMAKE_SHARED_LINKER_FLAGS": "/subsystem:console /OPT:REF /OPT:ICF=3 /LTCG /DEBUG:NONE /EMITPOGOPHASEINFO /ERRORREPORT:QUEUE",
         "CMAKE_EXE_LINKER_FLAGS": "/subsystem:console /OPT:REF /OPT:ICF=3 /LTCG /DEBUG:NONE /EMITPOGOPHASEINFO /ERRORREPORT:QUEUE",
         "CROSS_COMPILE_ARM64": true,
@@ -115,6 +137,10 @@
       "configurePreset": "x64-ninja-clangcl"
     },
     {
+      "name": "x64-ninja-clang",
+      "configurePreset": "x64-ninja-clang"
+    },
+    {
       "name": "x64-vs2022-msvc",
       "configurePreset": "x64-vs2022-msvc",
       "nativeToolOptions": [
@@ -125,6 +151,40 @@
     {
       "name": "x64-ninja-clang",
       "configurePreset": "x64-ninja-clang"
+    }
+  ],
+  "testPresets": [
+    {
+      "name": "tests-release",
+      "hidden": true,
+      "configurePreset": "tests-release",
+      "description": "Run the Catch2 test suite via CTest",
+      "output": {
+        "outputOnFailure": true
+      },
+      "execution": {
+        "noTestsAction": "error",
+        "stopOnFailure": false
+      }
+    }
+  ],
+  "workflowPresets": [
+    {
+      "name": "ci-testing",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "x64-ninja-clang"
+        },
+        {
+          "type": "build",
+          "name": "x64-ninja-clang"
+        },
+        {
+          "type": "test",
+          "name": "tests-release"
+        }
+      ]
     }
   ]
 }
