@@ -5,9 +5,12 @@ include(FetchContent)
 
 set(OUT_PATH "${CMAKE_CURRENT_BINARY_DIR}/bootstrapper" CACHE STRING "Output build directory for the bootstrapper")
 
-if (CMAKE_SYSTEM_PROCESSOR MATCHES "(arm64|aarch64|ARM64)")
+message(STATUS "CMAKE_SYSTEM_PROCESSOR: ${CMAKE_SYSTEM_PROCESSOR}")
+message(STATUS "CMAKE_HOST_SYSTEM_PROCESSOR: ${CMAKE_HOST_SYSTEM_PROCESSOR}")
+if (CMAKE_SYSTEM_PROCESSOR MATCHES "(arm64|aarch64|ARM64)" OR CMAKE_HOST_SYSTEM_PROCESSOR MATCHES "(arm64|aarch64|ARM64)")
     set(IS_ARM64 1)
 endif()
+message(STATUS "IS_ARM64: ${IS_ARM64}")
 
 if (NOT (CMAKE_CXX_COMPILER_ID STREQUAL "GNU" OR CMAKE_C_COMPILER_ID STREQUAL "GNU"))
     set(ASM_EXTENSION ".asm")
@@ -68,6 +71,7 @@ endif()
 
 if (DEFINED GENERATE_TEST AND GENERATE_TEST)
     file(WRITE "${OUT_PATH}/piggy/dlls.txt" "${OUT_PATH}/piggy/piggy.dll\n")
+    enable_testing()
 endif()
 
 set(PMO_SRC_DIR "${CMAKE_CURRENT_BINARY_DIR}/_deps/pmo-src")
@@ -77,7 +81,7 @@ FetchContent_Populate(
         PMO
         QUIET
         GIT_REPOSITORY https://github.com/peads/pmo.git
-        GIT_TAG v1.0.5
+        GIT_TAG v1.1.0
         SOURCE_DIR "${PMO_SRC_DIR}"
         BINARY_DIR "${PMO_BIN_DIR}"
         SUBBUILD_DIR "${PMO_SUB_DIR}"

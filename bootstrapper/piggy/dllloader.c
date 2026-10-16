@@ -22,52 +22,35 @@
 #include <dwmapi.h>
 #pragma comment(lib, "dwmapi.lib")
 
+typedef struct $ProducerInfo
+{
+    FARPROC producer;
+    const char *name;
+} ProducerInfo;
+
 int main()
 {
-    typedef HRESULT (*hresultProducer)();
-    typedef struct $ProducerInfo
-    {
-        hresultProducer producer;
-        const char *name;
-    } ProducerInfo;
+    const HMODULE module = LoadLibrary("dwmapi.dll");
+    if (!module)
+        return -1;
 
-    const HMODULE module = GetModuleHandle("dwmapi.dll");
-    hresultProducer DllCanUnloadNow = NULL; // NOLINT(*nullptr)
+    char dllPath[MAX_PATH];
+    GetModuleFileName(module, dllPath, MAX_PATH);
+    char systemDir[MAX_PATH];
+    GetSystemDirectory(systemDir, MAX_PATH);
 
-    if (module)
-    {
-        char dllPath[MAX_PATH];
-        GetModuleFileName(module, dllPath, MAX_PATH);
-        char systemDir[MAX_PATH];
-        GetSystemDirectory(systemDir, MAX_PATH);
-        printf("Actual dll loaded: %s\nMost likely expected dll due to pragma import: %s\\%s\nheh heh\n",
-               dllPath,
-               systemDir,
-               "dwmapi.dll");
-
-        // ReSharper disable once CppLocalVariableMayBeConst
-        FARPROC addr = GetProcAddress(module, "DllCanUnloadNow");
-        DllCanUnloadNow = (hresultProducer) addr;
-    }
-    ProducerInfo producers[2] = {
-        {.producer = DwmFlush, .name = "DwmFlush"},
+    printf("Actual dll loaded: %s\nMost likely expected dll due to pragma import: %s\\%s\nheh heh\n",
+           dllPath, systemDir, "dwmapi.dll");
+    const ProducerInfo producers[2] = {
+        {.producer = GetProcAddress(module, "DwmFlush"), .name = "DwmFlush"},
+        {.producer = GetProcAddress(module, "DllCanUnloadNow"), .name = "DllCanUnloadNow"}
     };
-    size_t len = sizeof(producers) / sizeof(*producers);
-    if (!DllCanUnloadNow)
-    {
-        --len;
-    }
-    else
-    {
-        const ProducerInfo temp = {.producer = DllCanUnloadNow, .name = "DllCanUnloadNow"};
-        producers[1] = temp;
-    }
 
-    int result = 0;
-    for (size_t i = 0; i < len; ++i)
+    long long result = 0;
+    for (size_t i = 0; i < 2; ++i)
     {
         result |= producers[i].producer();
         printf("%s: %s\n", producers[i].name, result != S_OK ? "FAIL" : "S_OK");
     }
-    return result;
+    return (int)result;
 }

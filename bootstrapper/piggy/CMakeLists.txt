@@ -9,3 +9,5 @@ if (DEFINED FILE_STEM AND FILE_STEM)
     add_dependencies(dllloader ${FILE_STEM})
 endif()
 set_target_properties(piggy PROPERTIES OUTPUT_NAME "piggy" PREFIX "")
+
+add_test(NAME dllloaderTest COMMAND dllloader)
