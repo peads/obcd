@@ -103,6 +103,24 @@
       }
     },
     {
+      "name" : "arm64-ninja-clang",
+      "displayName": "arm64-ninja-clang",
+      "description": "Compile for Windows arm64 using Ninja and clang",
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Windows"
+      },
+      "inherits": "x64-ninja-clang",
+      "cacheVariables": {
+        "CMAKE_SYSTEM_NAME": "Windows",
+        "CMAKE_C_COMPILER": "clang",
+        "CMAKE_CXX_COMPILER": "clang",
+        "CMAKE_C_FLAGS": "--target=arm64-pc-windows-msvc -O3 -g0 -march=native -flto=auto -fomit-frame-pointer -momit-leaf-frame-pointer -ffunction-sections -fdata-sections -Wall -Wextra -Werror",
+        "CMAKE_CXX_FLAGS": "--target=arm64-pc-windows-msvc -O3 -g0 -march=native -flto=auto -fomit-frame-pointer -momit-leaf-frame-pointer -ffunction-sections -fdata-sections -Wall -Wextra -Werror"
+      }
+    },
+    {
       "name": "x64-arm64-cross-compile",
       "displayName": "x64-arm64-cross-compile",
       "description": "Cross-Compile on Windows x64 for Windows arm64 using Ninja and clang-cl",
@@ -131,6 +149,10 @@
     {
       "name": "x64-ninja-clang",
       "configurePreset": "x64-ninja-clang"
+    },
+    {
+      "name": "arm64-ninja-clang",
+      "configurePreset": "arm64-ninja-clang"
     }
   ],
   "testPresets": [
@@ -145,6 +167,12 @@
         "noTestsAction": "error",
         "stopOnFailure": false
       }
+    },
+    {
+      "name": "tests-release-arm64",
+      "configurePreset": "arm64-ninja-clang",
+      "description": "Run the Catch2 test suite via CTest",
+      "inherits":  "tests-release"
     }
   ],
   "workflowPresets": [
@@ -162,6 +190,23 @@
         {
           "type": "test",
           "name": "tests-release"
+        }
+      ]
+    },
+    {
+      "name": "ci-testing-arm64",
+      "steps": [
+        {
+          "type": "configure",
+          "name": "arm64-ninja-clang"
+        },
+        {
+          "type": "build",
+          "name": "arm64-ninja-clang"
+        },
+        {
+          "type": "test",
+          "name": "tests-release-arm64"
         }
       ]
     }
