@@ -29,7 +29,3 @@ jobs:
       - name: "CMake CI Testing Workflow"
         run: cmake --workflow --preset ci-testing
         working-directory: ${{ github.workspace }}
-#      - name: "CMake CI Testing Workflow - arm64"
-#        if: runner.arch == 'ARM64'
-#        run: cmake --workflow --preset ci-testing-arm64
-#        working-directory: ${{ github.workspace }}

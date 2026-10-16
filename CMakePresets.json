@@ -129,26 +129,6 @@
   ],
   "buildPresets": [
     {
-      "name": "x64-arm64-cross-compile",
-      "configurePreset": "x64-arm64-cross-compile"
-    },
-    {
-      "name": "x64-ninja-clangcl",
-      "configurePreset": "x64-ninja-clangcl"
-    },
-    {
-      "name": "x64-ninja-clang",
-      "configurePreset": "x64-ninja-clang"
-    },
-    {
-      "name": "x64-vs2022-msvc",
-      "configurePreset": "x64-vs2022-msvc",
-      "nativeToolOptions": [
-        "/p:Configuration=Release",
-        "/p:Platform=x64"
-      ]
-    },
-    {
       "name": "x64-ninja-clang",
       "configurePreset": "x64-ninja-clang"
     }
@@ -157,7 +137,7 @@
     {
       "name": "tests-release",
       "hidden": true,
-      "configurePreset": "tests-release",
+      "configurePreset": "x64-ninja-clang",
       "description": "Run the Catch2 test suite via CTest",
       "output": {
         "outputOnFailure": true
